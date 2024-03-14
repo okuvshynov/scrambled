@@ -11,7 +11,6 @@ class FuzzyLinear(nn.Module):
         self.buffer = buffer
         self.n_offsets = n_offsets
         self.offsets = torch.randint(0, buffer_size - in_features * out_features, (n_offsets, )).tolist()
-        print(self.offsets)
 
     def forward(self, x):
         # pick one of the offsets for the weights?
@@ -43,4 +42,4 @@ class ScrambledLinear(nn.Module):
 
 if __name__ == "__main__":
     fl = FuzzyLinear(16, 16, 100, 1024, 8)
-    print(fl)
+    print(fl.offsets)
